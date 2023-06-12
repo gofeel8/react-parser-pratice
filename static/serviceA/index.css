@@ -1,0 +1,356 @@
+.main {
+  padding: 20px;
+  height: 100vh;
+  box-sizing: border-box;
+}
+
+.progressBar {
+  display: flex;
+  height: calc(29px + 12.5px);
+  position: relative;
+  justify-content: space-between;
+  align-items: center;
+  overflow-x: hidden;
+}
+
+.progressBar span {
+  position: relative;
+  background-color: white;
+  border: 2px solid rgb(184, 184, 184);
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+}
+
+.progressBar span::before {
+  z-index: -1;
+  content: "";
+  display: inline-block;
+  border: 2px solid rgb(184, 184, 184);
+  box-sizing: border-box;
+  position: relative;
+  right: 90px;
+  width: 100vw;
+}
+
+.progressBar span.complete {
+  border-color: rgb(189, 120, 246);
+  background-color: rgb(189, 120, 246);
+}
+
+.progressBar span.active {
+  border-color: rgb(162, 0, 255);
+}
+
+.progressBar span.active::after {
+  content: "";
+  border-top: 12.5px solid rgb(0, 0, 0);
+  border-left: 12.5px solid transparent;
+  border-right: 12.5px solid transparent;
+  position: absolute;
+  bottom: 27px;
+}
+
+.progressMessage {
+  background-color: black;
+  color: white;
+  height: 30px;
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 10px;
+}
+
+.queryTarget {
+  color: rgb(112, 173, 196);
+  padding: 10px 0;
+}
+
+.queryTitle {
+  font-size: 15px;
+  padding: 10px 0;
+}
+
+.queryHint {
+  font-size: 13px;
+  padding: 10px 0;
+  color: rgb(115, 115, 115);
+}
+
+input[type="checkbox"] {
+  display: none;
+}
+
+input[type="checkbox"]:checked + label {
+  background-color: rgb(93, 85, 253);
+}
+
+.checkboxLabel {
+  display: block;
+  cursor: pointer;
+  background-color: rgb(190, 190, 190);
+  padding: 10px 0;
+  margin: 10px 0;
+  border-radius: 30px;
+  text-align: center;
+  color: white;
+}
+
+.btnContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.btnContainer button {
+  border: none;
+  height: 30px;
+  width: 50px;
+  border-radius: 10px;
+  background-color: transparent;
+  font-weight: bold;
+  cursor: pointer;
+  color: blue;
+}
+
+.btnContainer button:disabled {
+  cursor: default;
+  color: rgb(206, 206, 206);
+}
+
+textarea {
+  background-color: rgb(192, 192, 192);
+  border-radius: 10px;
+  width: calc(100% - 20px);
+  padding: 10px;
+}
+
+textarea::placeholder {
+  color: rgb(144, 144, 144);
+}
+
+input[type="text"] {
+  background-color: rgb(192, 192, 192);
+  width: 100%;
+  box-sizing: border-box;
+  height: 40px;
+  border-radius: 10px;
+  padding: 10px;
+  border: none;
+}
+
+input[type="number"] {
+  background-color: rgb(192, 192, 192);
+  width: 100%;
+  box-sizing: border-box;
+  height: 40px;
+  border-radius: 10px;
+  padding: 10px 40px;
+  border: none;
+  text-align: end;
+}
+
+input[type="number"] + label {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0px;
+  background-color: transparent;
+  color: white;
+  height: 40px;
+  width: 40px;
+  border-radius: 10px;
+}
+
+input[type="number"] ~ .label {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0px;
+  background-color: transparent;
+  color: white;
+  height: 40px;
+  width: 40px;
+  border-radius: 10px;
+}
+
+input[type="number"] ~ .unit {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0px;
+  right: 1px;
+  background-color: transparent;
+  color: white;
+  height: 40px;
+  width: 40px;
+  border-radius: 10px;
+}
+
+.inputWrapper {
+  position: relative;
+}
+
+.validate {
+  color: red;
+  height: 10px;
+}
+
+.interMissionContainer {
+  position: relative;
+  padding: 40px 20px;
+  height: 100vh;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+.interMissionContainer h1 {
+  font-size: 27px;
+}
+
+.interMissionContainer h2 {
+  font-size: 17px;
+  font-weight: normal;
+}
+
+.interMissionContainer .nextBtn {
+  background-color: rgb(133, 133, 235);
+  border: none;
+  height: 50px;
+  border-radius: 20px;
+  color: white;
+}
+
+.exitButton {
+  border: none;
+  background-color: transparent;
+  font-size: 20px;
+  cursor: pointer;
+}
+.modalWrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(141, 141, 141, 0.447);
+  display: flex;
+  align-items: flex-end;
+}
+.hidden {
+  visibility: hidden;
+}
+
+.none {
+  display: none;
+}
+
+@keyframes moveUp {
+  0% {
+    transform: translateY(200px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.modal {
+  background-color: rgb(255, 255, 255);
+  width: 100%;
+  height: 200px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  animation: moveUp 400ms ease;
+}
+
+.modalContent {
+  padding: 20px;
+  flex-grow: 1;
+  font-size: 20px;
+  display: flex;
+  white-space: pre-line;
+}
+
+.modalBtnWrapper {
+  height: 60px;
+  width: 100%;
+  display: flex;
+  border-radius: 0px 0px 20px 20px;
+  justify-content: space-between;
+  flex-direction: row-reverse;
+}
+
+.modalBtn {
+  width: 50%;
+  font-weight: bold;
+  border: none;
+  font-size: 20px;
+  color: white;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+.modalBtn:nth-child(1) {
+  background-color: rgb(203, 128, 233);
+}
+.modalBtn:nth-child(2) {
+  background-color: rgb(153, 0, 255);
+}
+
+.intro {
+  height: 100vh;
+  margin: 0;
+  padding: 20px 24px 32px 24px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.intro .title {
+  font-size: 24px;
+  font-weight: 600;
+  display: flex;
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.intro .description {
+  text-align: center;
+  color: #4a5461;
+  font-size: 14px;
+  margin: 10px 0;
+}
+
+.intro .question {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+
+.intro .question img {
+  margin: 8px;
+}
+
+.intro .tip {
+  font-size: 13px;
+  color: #4a5461;
+  margin-bottom: 40px;
+}
+
+.intro button {
+  position: fixed;
+  bottom: 32px;
+  height: 56px;
+  width: calc(100% - 48px);
+  max-width: 820px;
+  box-sizing: border-box;
+  background-color: #6457f1;
+  color: #ffffff;
+  border-radius: 16px;
+  border: none;
+  cursor: pointer;
+}
