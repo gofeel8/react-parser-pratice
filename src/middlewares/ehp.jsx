@@ -108,7 +108,7 @@ export default function useMiddleWare() {
           onClick: () => {
             const modal = document.querySelector(".modalWrapper");
             if (modal) {
-              navigate("/survey/intro");
+              navigate("/ehp/survey/intro");
             }
           },
         },
@@ -135,7 +135,7 @@ export default function useMiddleWare() {
               searchParams.set("queryIdx", queryIdx + 1);
               setSearchParams(searchParams);
             } else {
-              navigate("/survey/interMission");
+              navigate("/ehp/survey/interMission");
             }
           },
         },
@@ -223,7 +223,7 @@ export default function useMiddleWare() {
         },
         nextBtn: {
           onClick: () => {
-            navigate("/survey/query?queryIdx=0");
+            navigate("/ehp/survey/query?queryIdx=0");
           },
         },
       };
@@ -235,7 +235,7 @@ export default function useMiddleWare() {
         userName: { text: "공필상" },
         surveyStart: {
           onClick: () => {
-            navigate("/survey/query?queryIdx=0");
+            navigate("/ehp/survey/query?queryIdx=0");
           },
         },
       };
