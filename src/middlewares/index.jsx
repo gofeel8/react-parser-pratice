@@ -1,7 +1,7 @@
 import { lazy } from "react";
 
-const EHP = lazy(() => import("./ehp"));
-const CHC = lazy(() => import("./chc"));
+const EHP = lazy(() => import("./EHP"));
+const CHC = lazy(() => import("./CHC"));
 
 export const Middleware = {
   ehp: () => <EHP></EHP>,

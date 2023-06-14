@@ -1,63 +1,11 @@
 import React, { useEffect, useState } from "react";
 import parse from "html-react-parser";
-import useSurveyData from "../hooks/useSurveyData";
+import useSurveyData from "../../hooks/useSurveyData";
 import { useSearchParams, useParams, useNavigate } from "react-router-dom";
-import useGetHTML, { useGetCSS } from "../hooks/useGetResource";
-import { parseOption } from "../lib/parse";
-
-const filesPath = {
-  intro: "http://52.78.71.146/survey/test/serviceA/intro",
-  query: "http://52.78.71.146/survey/test/serviceA/query",
-  progressBar_default:
-    "http://52.78.71.146/survey/test/serviceA/progressBar_default",
-  progressBar_active:
-    "http://52.78.71.146/survey/test/serviceA/progressBar_active",
-  progressBar_complete:
-    "http://52.78.71.146/survey/test/serviceA/progressBar_complete",
-  queryWrapper: "http://52.78.71.146/survey/test/serviceA/queryWrapper",
-  answer_checkbox: "http://52.78.71.146/survey/test/serviceA/answer_checkbox",
-  answer_textarea: "http://52.78.71.146/survey/test/serviceA/answer_textarea",
-  answer_input: "http://52.78.71.146/survey/test/serviceA/answer_input",
-  interMission: "http://52.78.71.146/survey/test/serviceA/interMission",
-};
-
-const cssPath = "http://52.78.71.146/survey/test/serviceA/index.css";
-
-const validateValue = (option) => {
-  const { userAnswer } = option;
-  const { VALUE_TYPE, VALUE_HIGH, VALUE_LOW } = option.attributes;
-  if (userAnswer && VALUE_TYPE === "NUMBER") {
-    if (VALUE_HIGH && VALUE_HIGH < Number(userAnswer)) {
-      return "값이 너무 크다";
-    }
-    if (VALUE_LOW && VALUE_LOW > Number(userAnswer)) {
-      return "값이 너무 작다";
-    }
-  }
-  return "";
-};
-
-const isActiveNextBtn = (nowQuestion) => {
-  if (nowQuestion.objectiveOptions) {
-    const selectedItems = nowQuestion.objectiveOptions.filter(
-      (item) => item.selected
-    );
-    return selectedItems.length === 0 ? false : true;
-  } else if (nowQuestion.scaleAnswerOption) {
-    return false;
-  } else if (nowQuestion.subjectiveOptions) {
-    const emptyAnswers = nowQuestion.subjectiveOptions.filter(
-      (item) => item.userAnswer.length === 0
-    );
-    if (emptyAnswers.length > 0) return false;
-    const invalidItems = nowQuestion.subjectiveOptions.filter((item) => {
-      return validateValue(item);
-    });
-    if (invalidItems.length > 0) return false;
-    return true;
-  }
-  return false;
-};
+import useGetHTML, { useGetCSS } from "../../hooks/useGetResource";
+import { parseOption } from "../../lib/parse";
+import { filesPath, cssPath } from "./constant";
+import { validateValue, isActiveNextBtn } from "./lib";
 
 export default function useMiddleWare() {
   const [dataSet, setDataSet] = useState();
